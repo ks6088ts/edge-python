@@ -1,5 +1,7 @@
 PYFILES := $(shell find . -type d -name .venv -prune -o -type f -name '*.py' -print)
 POETRY_RUN := poetry run
+VENV_CREATE := true # set false for global install
+VENV_IN_PROJECT := true
 
 # https://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
 .PHONY: help
@@ -9,12 +11,14 @@ help:
 
 .PHONY: clean
 clean: ## clean
-	rm -rf .venv 
+	rm -rf .venv
 
 .PHONY: install
 install: ## install
 	python -m pip install --upgrade pip
 	pip install poetry
+	poetry config virtualenvs.create $(VENV_CREATE)
+	poetry config virtualenvs.in-project $(VENV_IN_PROJECT)
 	poetry install
 
 .PHONY: format

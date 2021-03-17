@@ -5,6 +5,7 @@ import drivers
 
 DEVICE_NAMES = [
     "mock",
+    "imu0",
     # add device names here
 ]
 
@@ -12,6 +13,8 @@ DEVICE_NAMES = [
 def get_driver(name):  ## pylint: disable=redefined-outer-name
     if name == DEVICE_NAMES[0]:
         return drivers.Mock()
+    if name == DEVICE_NAMES[1]:
+        return drivers.Imu0()
     # add drivers here
     raise ValueError(f'Invalid name "{name}" was specified')
 
