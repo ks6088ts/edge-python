@@ -15,3 +15,12 @@ python main.py
 # check ci
 make ci
 ```
+
+# WebSocket Server
+
+- [Browser-based example](https://websockets.readthedocs.io/en/stable/intro.html#browser-based-example)
+
+```bash
+poetry add websockets
+poetry run python ws.py
+```
