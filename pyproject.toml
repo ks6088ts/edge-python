@@ -9,6 +9,7 @@ license = "MIT"
 python = "^3.7"
 spidev = "^3.5"
 numpy = "^1.20.1"
+websockets = "^8.1"
 
 [tool.poetry.dev-dependencies]
 black = "^20.8b1"
