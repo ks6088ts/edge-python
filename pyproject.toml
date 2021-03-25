@@ -6,10 +6,11 @@ authors = ["ks6088ts <ks6088ts@gmail.com>"]
 license = "MIT"
 
 [tool.poetry.dependencies]
-python = "^3.7"
+python = ">=3.7,<3.10"
 spidev = "^3.5"
 numpy = "^1.20.1"
 websockets = "^8.1"
+scipy = "^1.6.2"
 
 [tool.poetry.dev-dependencies]
 black = "^20.8b1"
