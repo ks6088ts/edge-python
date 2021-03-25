@@ -1,10 +1,15 @@
 import argparse
 import asyncio
-import random
+import json
 
 import websockets
 
+import processors
+
 DELTA_TIME = None
+
+
+processor = processors.Imu()
 
 
 def parse_arguments():
@@ -23,7 +28,10 @@ def parse_arguments():
 
 async def time(websocket, path):  # pylint: disable=unused-argument
     while True:
-        await websocket.send(f"{random.random()}, {random.random()}, {random.random()}")
+        processor.update(acc=[0, 0, 0], angv=[0, 0, 0], dt=DELTA_TIME)
+        state = processor.get_state()
+        print(state)
+        await websocket.send(json.dumps(state))
         await asyncio.sleep(DELTA_TIME)
 
 
